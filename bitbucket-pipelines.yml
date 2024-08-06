@@ -1,0 +1,55 @@
+definitions:
+  caches:
+    pnpm: $BITBUCKET_CLONE_DIR/.pnpm-store
+  services:
+    postgres:
+      image: postgres
+      variables:
+        POSTGRES_DB: 'link_backoffice'
+        POSTGRES_USER: 'postgres'
+        POSTGRES_PASSWORD: 'secret'
+image: node:20.14.0
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        caches:
+          - pnpm
+        script:
+          - corepack enable
+          - corepack prepare pnpm@latest-9 --activate
+          - pnpm install
+          - pnpm run build
+    - parallel:
+        - step:
+            name: Eslint
+            caches:
+              - pnpm
+            script:
+              - corepack enable
+              - corepack prepare pnpm@latest-9 --activate
+              - pnpm install
+              - pnpm run lint:check
+        - step:
+            name: Prettier
+            caches:
+              - pnpm
+            script:
+              - corepack enable
+              - corepack prepare pnpm@latest-9 --activate
+              - pnpm install
+              - pnpm run lint:check
+        - step:
+            name: Test
+            caches:
+              - pnpm
+            script:
+              - corepack enable
+              - corepack prepare pnpm@latest-9 --activate
+              - pnpm install
+              - node ace generate:key
+              - cp .env.example .env
+              - pnpm run test
+            services:
+              - postgres

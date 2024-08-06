@@ -1,0 +1,11 @@
+{
+  "message": "Body de activación creado correctamente",
+  "data": {
+    "platform_user_id": 15594,
+    "email": "user@example.com",
+    "password": "BMEVQi8R",
+    "plan_id": 23,
+    "track_id": "50ad4df2-4a5f-40a6-b49b-48b833ee6012",
+    "key": "FTECH.LINK.143"
+  }
+}

@@ -1,0 +1,16 @@
+services:
+  ftech-medik-cotizador-db:
+    image: postgres:latest
+    container_name: ftech-medik-cotizador-db-container
+    ports:
+      - '53323:5432'
+    volumes:
+      - postgresdb:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: ftech-medik-cotizador
+
+volumes:
+  postgresdb:
+    driver: local
