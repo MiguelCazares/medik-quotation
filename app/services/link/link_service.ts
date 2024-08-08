@@ -19,8 +19,8 @@ export default class LinkService implements LinkServiceContract {
   private headers: Record<string, string>;
 
   public constructor() {
-    this.url = linkUrl;
-    this.linkToken = linkToken;
+    this.url = linkUrl!;
+    this.linkToken = linkToken!;
     this.headers = {
       'link-control-api-token': this.linkToken,
     };

@@ -12,7 +12,7 @@ export const UserFactory = factory
       phone: faker.phone.number(),
       status: 'active',
       is_dealer: false,
-      password: faker.internet.password(),
+      password: 'password',
     };
   })
   .build();

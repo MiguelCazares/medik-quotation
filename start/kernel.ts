@@ -43,5 +43,8 @@ router.use([
  * the routes or the routes group.
  */
 export const middleware = router.named({
+  roleOrPermission: () => import('adonis-lucid-permission/role_or_permission_middleware'),
+  permission: () => import('adonis-lucid-permission/permission_middleware'),
+  role: () => import('adonis-lucid-permission/role_middleware'),
   auth: () => import('#middleware/auth_middleware'),
 });

@@ -10,7 +10,11 @@ export default defineConfig({
   | will be scanned automatically from the "./commands" directory.
   |
   */
-  commands: [() => import('@adonisjs/core/commands'), () => import('@adonisjs/lucid/commands')],
+  commands: [
+    () => import('@adonisjs/core/commands'),
+    () => import('@adonisjs/lucid/commands'),
+    () => import('adonis-lucid-permission/commands'),
+  ],
 
   /*
   |--------------------------------------------------------------------------
@@ -35,6 +39,7 @@ export default defineConfig({
     () => import('@adonisjs/i18n/i18n_provider'),
     () => import('#providers/app_provider'),
     () => import('@eienjs/adonis-api-query/api_query_provider'),
+    () => import('adonis-lucid-permission/permissions_provider'),
   ],
 
   /*
