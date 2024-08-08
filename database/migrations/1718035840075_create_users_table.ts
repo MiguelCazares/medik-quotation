@@ -9,7 +9,7 @@ export default class extends BaseSchema {
 
       table.bigInteger('facturatech_id').nullable();
       table.bigInteger('facturatech_dealer_id').nullable();
-      table.bigInteger('medik_dealer_id').unsigned().references('id').inTable('users').onDelete('CASCADE');
+      table.bigInteger('medik_dealer_id');
       table.string('username').notNullable().unique();
       table.string('nit').notNullable().unique();
       table.string('email').notNullable().unique();

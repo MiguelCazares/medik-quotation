@@ -14,7 +14,6 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('quotation_requests')
         .onDelete('CASCADE');
-      table.string('type').notNullable();
       table.string('status').notNullable();
       table.double('total').notNullable();
       table.string('payment_method').notNullable();

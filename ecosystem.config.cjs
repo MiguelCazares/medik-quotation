@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'link-backoffice',
+      name: 'medik-cotizador',
       script: './build/bin/server.js',
       instances: '4',
       exec_mode: 'cluster',
