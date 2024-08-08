@@ -1,4 +1,5 @@
 import { type ApplicationService } from '@adonisjs/core/types';
+import { FacturatechDataMapperContract } from '#services/facturatech_data_mapper/contracts/facturatech_data_mapper_contract';
 import { LinkServiceContract } from '#services/link/contracts/link_service_contract';
 import { WompiServiceContract } from '#services/wompi/contracts/wompi_service_contract';
 
@@ -18,13 +19,22 @@ export default class AppProvider {
   public async boot(): Promise<void> {
     await import('../src/extensions/request_macros.js');
     await import('../src/extensions/response_macros.js');
+
     const LinkService = await import('#services/link/link_service');
     this.app.container.bind(LinkServiceContract, () => {
       return this.app.container.make(LinkService.default);
     });
+
     const WompiService = await import('#services/wompi/wompi_service');
     this.app.container.bind(WompiServiceContract, () => {
       return this.app.container.make(WompiService.default);
+    });
+
+    const FacturatechDataMapperService = await import(
+      '#services/facturatech_data_mapper/facturatech_data_mapper_service'
+    );
+    this.app.container.bind(FacturatechDataMapperContract, () => {
+      return this.app.container.make(FacturatechDataMapperService.default);
     });
   }
 

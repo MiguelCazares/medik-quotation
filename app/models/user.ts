@@ -3,6 +3,7 @@ import { withAuthFinder } from '@adonisjs/auth/mixins/lucid';
 import { compose } from '@adonisjs/core/helpers';
 import hash from '@adonisjs/core/services/hash';
 import { BaseModel, column } from '@adonisjs/lucid/orm';
+import { withAuthorizable } from 'adonis-lucid-permission';
 import { DateTime } from 'luxon';
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
@@ -10,7 +11,12 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   passwordColumnName: 'password',
 });
 
-export default class User extends compose(BaseModel, AuthFinder) {
+const HasAuthorizable = withAuthorizable({
+  rolesPivotTable: 'user_has_roles',
+  permissionsPivotTable: 'user_has_permissions',
+});
+
+export default class User extends compose(BaseModel, AuthFinder, HasAuthorizable) {
   @column({ isPrimary: true })
   public declare id: number;
 
