@@ -44,11 +44,12 @@
     "@japa/assert": "^3.0.0",
     "@japa/plugin-adonisjs": "^3.0.1",
     "@japa/runner": "^3.1.4",
-    "@nodecfdi/eslint-config": "^1.6.7",
+    "@nodecfdi/eslint-config": "^1.9.3",
     "@nodecfdi/prettier-config": "^1.1.1",
     "@swc/core": "^1.5.7",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.12.12",
+    "@types/pdfmake": "^0.2.9",
     "eslint": "^8.57.0",
     "eslint-define-config": "^2.1.0",
     "hot-hook": "^0.2.6",
@@ -70,7 +71,7 @@
     "got": "^14.4.1",
     "luxon": "^3.4.4",
     "pg": "^8.12.0",
-    "pino-roll": "^1.1.0",
+    "pino-roll": "^k1.1.0",
     "reflect-metadata": "^0.2.2"
   },
   "hotHook": {
